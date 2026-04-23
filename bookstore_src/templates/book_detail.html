@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+{% block container %}
+<div class="catalogLayout">
+    <section id="catLeft">
+        {% for cat in categories %}
+            {% if book.categoryId == cat.categoryId %}
+                <p class="selectedCategory">{{ cat.categoryName }}</p>
+            {% else %}
+                <p class="notSelectedCategory">
+                    <a href="{{ url_for('category', categoryId=cat.categoryId) }}">
+                        {{ cat.categoryName }}
+                    </a>
+                </p>
+            {% endif %}
+        {% endfor %}
+
+        <p class="notSelectedCategory specialLink">
+            <a href="{{ url_for('read_now') }}">Read Now Picks</a>
+        </p>
+    </section>
+
+    <section id="catRight" class="detailSection">
+        <div class="bookDetailCard">
+            <div class="detailImageWrap">
+                <img
+                    src="{{ url_for('static', filename='images/books/' + book.image) }}"
+                    alt="{{ book.title }}"
+                >
+            </div>
+
+            <div class="detailTextBox">
+                <h1 class="detailTitle">{{ book.title }}</h1>
+
+                <p class="bookDetail"><strong>by {{ book.author }}</strong></p>
+                <p class="bookDetail">ISBN: {{ book.isbn }}</p>
+                <p class="bookDetail">Category: {{ book.categoryName }}</p>
+
+                <p class="bookPrice detailPrice">${{ '%.2f'|format(book.price) }}</p>
+
+                <div class="buttonRow detailButtons">
+                    <a class="actionButton" href="#">Add to cart</a>
+
+                    {% if book.readNow == 1 %}
+                        <a class="actionButton secondaryAction" href="{{ url_for('read_now') }}">Read Now</a>
+                    {% endif %}
+
+                    <a href="{{ url_for('category', categoryId=book.categoryId) }}" class="actionButton tertiaryAction">
+                        Back to Category
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+{% endblock %}
