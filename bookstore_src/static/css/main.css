@@ -1,0 +1,538 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #f3f6fb;
+  color: #1c2b3a;
+}
+
+a {
+  text-decoration: none;
+  color: #0e4d92;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+header {
+  background-color: #ffffff;
+  border-bottom: 1px solid #d7e1ec;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 18px 36px;
+}
+
+#leftHeader,
+#midHeader,
+#rightHeader {
+  display: flex;
+  align-items: center;
+}
+
+#leftHeader {
+  flex: 0 0 auto;
+}
+
+#leftHeader img {
+  width: 150px;
+  height: 90px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+#midHeader {
+  flex: 1;
+  flex-direction: column;
+  justify-content: center;
+  gap: 12px;
+}
+
+#searchBoxForm {
+  width: 100%;
+  max-width: 520px;
+  display: flex;
+  align-items: center;
+  background-color: #eef4fb;
+  border: 1px solid #c9d8ea;
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+#searchBox {
+  flex: 1;
+  border: none;
+  background: transparent;
+  padding: 14px 18px;
+  font-size: 1rem;
+  outline: none;
+}
+
+#searchIconButton {
+  border: none;
+  background: transparent;
+  padding: 10px 14px;
+  cursor: pointer;
+}
+
+#searchIcon {
+  width: 22px;
+  height: 22px;
+  object-fit: contain;
+}
+
+.dropdown {
+  position: relative;
+}
+
+.dropdownSelect {
+  margin: 0;
+  background-color: #0e4d92;
+  color: white;
+  padding: 10px 18px;
+  border-radius: 999px;
+  font-weight: bold;
+  cursor: default;
+}
+
+.dropdownContent {
+  display: none;
+  position: absolute;
+  top: 42px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: white;
+  min-width: 260px;
+  border: 1px solid #d7e1ec;
+  border-radius: 12px;
+  padding: 10px 0;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.08);
+  z-index: 10;
+}
+
+.dropdown:hover .dropdownContent {
+  display: block;
+}
+
+.dropdownContent p {
+  margin: 0;
+}
+
+.dropdownContent a {
+  display: block;
+  padding: 10px 18px;
+}
+
+.dropdownContent a:hover {
+  background-color: #eef4fb;
+  text-decoration: none;
+}
+
+#rightHeader {
+  flex: 0 0 auto;
+  gap: 12px;
+  justify-content: flex-end;
+}
+
+#cartIcon img {
+  width: 42px;
+  height: 42px;
+  object-fit: contain;
+}
+
+#cartCount {
+  font-size: 0.95rem;
+  color: #5d6d7f;
+}
+
+.loginButton a,
+.actionButton,
+.submitButton {
+  display: inline-block;
+  background-color: #0e4d92;
+  color: white;
+  padding: 10px 16px;
+  border-radius: 999px;
+  font-weight: bold;
+  border: none;
+}
+
+.loginButton a:hover,
+.actionButton:hover,
+.submitButton:hover {
+  background-color: #0a3d74;
+  text-decoration: none;
+}
+
+.pageShell {
+  width: min(1200px, calc(100% - 48px));
+  margin: 28px auto 36px;
+}
+
+#homeLayout {
+  display: grid;
+  grid-template-columns: 1.05fr 1.35fr;
+  gap: 28px;
+  align-items: start;
+}
+
+#mainLeft,
+#mainRight,
+#catLeft,
+#catRight,
+.formCard,
+.errorCard,
+.bookDetailCard {
+  background-color: white;
+  border: 1px solid #d7e1ec;
+  border-radius: 16px;
+  box-shadow: 0 10px 28px rgba(14, 77, 146, 0.08);
+}
+
+#mainLeft,
+#mainRight {
+  padding: 28px;
+}
+
+.welcomeText {
+  line-height: 1.7;
+  margin-top: 0;
+}
+
+.sectionHeading {
+  margin-top: 0;
+  text-align: center;
+}
+
+#categorySelections {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 22px;
+  justify-items: center;
+}
+
+.category {
+  width: 100%;
+  max-width: 270px;
+  text-align: center;
+  padding: 14px;
+  border: 1px solid #e2eaf3;
+  border-radius: 14px;
+  background-color: #f9fbfe;
+}
+
+.category p {
+  margin: 0 0 12px;
+  font-weight: bold;
+  min-height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.category img {
+  width: 100%;
+  height: 165px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.catalogLayout {
+  display: grid;
+  grid-template-columns: 250px 1fr;
+  gap: 24px;
+  align-items: start;
+}
+
+#catLeft {
+  padding: 22px 18px;
+}
+
+#catRight {
+  padding: 24px;
+}
+
+.selectedCategory,
+.notSelectedCategory {
+  margin: 0 0 12px;
+  text-align: center;
+  border-radius: 999px;
+  padding: 11px 14px;
+}
+
+.selectedCategory {
+  background-color: #0e4d92;
+  color: white;
+  font-weight: bold;
+}
+
+.notSelectedCategory {
+  background-color: #eef4fb;
+  font-weight: bold;
+}
+
+.specialLink {
+  margin-top: 20px;
+  background-color: #dcecff;
+}
+
+.resultBanner {
+  text-align: center;
+  font-size: 1.15rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.emptyState {
+  text-align: center;
+  color: #c62828;
+  font-weight: bold;
+  margin: 10px 0 24px;
+}
+
+.bookGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 22px;
+}
+
+.book {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  border: 1px solid #e2eaf3;
+  border-radius: 16px;
+  background-color: #f9fbfe;
+  padding: 18px;
+  min-height: 460px;
+}
+
+.bookImageWrap {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.book img,
+.detailImageWrap img {
+  width: 220px;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 10px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+}
+
+.bookDetailBox {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  margin-top: 18px;
+}
+
+.bookTitle {
+  margin: 0;
+  font-size: 1.05rem;
+  font-weight: bold;
+  line-height: 1.45;
+}
+
+.bookDetail,
+.bookPrice {
+  margin: 0;
+}
+
+.bookPrice {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #0e4d92;
+}
+
+.buttonRow {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 8px;
+}
+
+.secondaryAction {
+  background-color: #2f7b4b;
+}
+
+.secondaryAction:hover {
+  background-color: #235d39;
+}
+
+.tertiaryAction {
+  background-color: #657786;
+}
+
+.tertiaryAction:hover {
+  background-color: #4d5b67;
+}
+
+.detailSection {
+  display: flex;
+  justify-content: center;
+}
+
+.bookDetailCard {
+  width: min(900px, 100%);
+  padding: 28px;
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  gap: 30px;
+  align-items: start;
+}
+
+.detailImageWrap {
+  display: flex;
+  justify-content: center;
+}
+
+.detailTextBox {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.detailTitle {
+  margin: 0 0 6px;
+  line-height: 1.35;
+}
+
+.detailPrice {
+  margin-top: 10px;
+}
+
+.detailButtons {
+  justify-content: flex-start;
+  margin-top: 12px;
+}
+
+.formPage,
+.errorPage {
+  display: flex;
+  justify-content: center;
+}
+
+.formCard,
+.errorCard {
+  width: min(640px, 100%);
+  padding: 30px;
+}
+
+.formCard h2,
+.errorCard h2 {
+  text-align: center;
+  margin-top: 0;
+}
+
+.bookForm {
+  display: grid;
+  gap: 16px;
+}
+
+.formRow {
+  display: grid;
+  gap: 8px;
+}
+
+.formRow label {
+  font-weight: bold;
+}
+
+.formRow input,
+.formRow select {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid #c9d8ea;
+  border-radius: 10px;
+  font-size: 1rem;
+}
+
+.submitButton {
+  cursor: pointer;
+  justify-self: center;
+  padding: 12px 24px;
+}
+
+.errorCard p,
+.errorCard code {
+  display: block;
+  text-align: center;
+}
+
+.errorCard code {
+  margin-top: 12px;
+  background-color: #eef4fb;
+  padding: 14px;
+  border-radius: 10px;
+  word-break: break-word;
+}
+
+footer {
+  background-color: #ffffff;
+  border-top: 1px solid #d7e1ec;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  padding: 18px 36px;
+}
+
+#footerLeft,
+#footerRight {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+#footerRight img {
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
+}
+
+@media (max-width: 980px) {
+  header,
+  footer,
+  #homeLayout,
+  .catalogLayout,
+  .bookDetailCard {
+    grid-template-columns: 1fr;
+    flex-direction: column;
+  }
+
+  header {
+    align-items: stretch;
+  }
+
+  #leftHeader,
+  #midHeader,
+  #rightHeader,
+  #footerLeft,
+  #footerRight {
+    justify-content: center;
+  }
+
+  .bookDetailCard {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .detailButtons {
+    justify-content: center;
+  }
+}

@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block container %}
+<section class="formPage">
+    <div class="formCard">
+        <h2>Add a New Book</h2>
+
+        <form method="POST" class="bookForm">
+            <div class="formRow">
+                <label for="title">Title</label>
+                <input id="title" type="text" name="title" required>
+            </div>
+
+            <div class="formRow">
+                <label for="author">Author</label>
+                <input id="author" type="text" name="author" required>
+            </div>
+
+            <div class="formRow">
+                <label for="isbn">ISBN</label>
+                <input id="isbn" type="text" name="isbn" required>
+            </div>
+
+            <div class="formRow">
+                <label for="price">Price</label>
+                <input id="price" type="number" step="0.01" name="price" required>
+            </div>
+
+            <div class="formRow">
+                <label for="image">Image filename</label>
+                <input id="image" type="text" name="image" placeholder="example.jpg" required>
+            </div>
+
+            <div class="formRow">
+                <label for="categoryId">Category</label>
+                <select id="categoryId" name="categoryId" required>
+                    {% for cat in categories %}
+                        <option value="{{ cat.categoryId }}">{{ cat.categoryName }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <button type="submit" class="submitButton">Add Book</button>
+        </form>
+    </div>
+</section>
+{% endblock %}

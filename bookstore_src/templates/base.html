@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Airplane Book</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    <link rel="shortcut icon" href="data:image/x-icon;," type="image/x-icon">
+  </head>
+  <body>
+    <header>
+      <div id="leftHeader">
+        <a href="{{ url_for('home') }}">
+          <img src="{{ url_for('static', filename='images/misc/airplane_book_logo.jpg') }}" alt="Airplane Book logo">
+        </a>
+      </div>
+
+      <div id="midHeader">
+        <form id="searchBoxForm" action="{{ url_for('search') }}" method="post">
+          <input id="searchBox" type="text" placeholder="Search book titles" name="search">
+          <button id="searchIconButton" type="submit" aria-label="Search">
+            <img id="searchIcon" src="{{ url_for('static', filename='images/misc/search_icon.jpg') }}" alt="search icon">
+          </button>
+        </form>
+
+        {% if categories is defined %}
+        <div class="dropdown">
+          <p class="dropdownSelect">Browse Categories</p>
+          <div class="dropdownContent">
+            {% for category in categories %}
+              <p>
+                <a href="{{ url_for('category', categoryId=category.categoryId) }}">
+                  {{ category.categoryName }}
+                </a>
+              </p>
+            {% endfor %}
+          </div>
+        </div>
+        {% endif %}
+      </div>
+
+      <div id="rightHeader">
+        <div id="cartIcon">
+          <a href="#">
+            <img src="{{ url_for('static', filename='images/misc/cart_icon.jpg.webp') }}" alt="shopping cart icon">
+          </a>
+        </div>
+        <div id="cartCount">1 item</div>
+        <div class="loginButton"><a href="{{ url_for('read_now') }}">Read Now</a></div>
+        <div class="loginButton"><a href="{{ url_for('add_book') }}">Add Book</a></div>
+      </div>
+    </header>
+
+    <main class="pageShell">{% block container %}{% endblock %}</main>
+
+    <footer>
+      <div id="footerLeft">
+        <p>Airplane Book</p>
+        <p>&copy;</p>
+        <a href="{{ url_for('home') }}">Home</a>
+        <a href="{{ url_for('read_now') }}">Read Now</a>
+      </div>
+      <div id="footerRight">
+        <a href="#"><img src="{{ url_for('static', filename='images/misc/facebook_icon.jpg') }}" alt="Facebook"></a>
+        <a href="#"><img src="{{ url_for('static', filename='images/misc/ig_icon.jpg') }}" alt="Instagram"></a>
+      </div>
+    </footer>
+  </body>
+</html>
